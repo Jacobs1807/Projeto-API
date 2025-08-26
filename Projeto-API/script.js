@@ -6,7 +6,7 @@ async function fetchCharacters(page){
     resultsDiv.innerHTML = "<p>Carregando..</p>"
 
     try {
-        const response = await fetch(`https://swapi.info/api/starships`)
+        const response = await fetch(`https://thronesapi.com/api/v2/Characters`)
         const data = await response.json()
         console.log(data)
 
@@ -20,10 +20,12 @@ async function fetchCharacters(page){
             const card = document.createElement("div")
             card.className = "card"
             card.innerHTML = `
-                <img src="${character.image}" alt="${character.name}">
-                <h3>${character.name}</h3>
-                <p><strong>Status:</strong> ${character.status}</p>
-                <p><strong>Passageiros:</strong> ${character.passengers}</p>
+            <div>
+                <img src="${character.imageUrl}" alt="${character.fullName}">
+                </div>
+                <h3>${character.fullName}</h3>
+                <p><strong>Título:</strong> ${character.title}</p> 
+                <p><strong>Família:</strong> ${character.family}</p>
             `
             resultsDiv.appendChild(card)
         });
